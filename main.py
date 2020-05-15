@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import ttk
 from settings import *
 from schedule import *
+from calendar import*
 import tkinter.font as font
-from calendar import *
 
 class Application:
     def __init__(self, parent):
@@ -16,7 +16,7 @@ class Application:
         self.tab_parent = ttk.Notebook(self.mainWindow)
         #adjust style for tabs to fit window
         style = ttk.Style()
-        style.theme_create( "MyStyle", parent="alt", settings={
+        style.theme_create( "TabStyle", parent="alt", settings={
                             "TNotebook": {"configure": {"tabmargins":[ 4, 5, -5, 0] } },
                             "TNotebook.Tab": {"configure": {"padding":[32,5],
                                     "font" : ('URW Gothic L', '12', 'bold')}, }})
