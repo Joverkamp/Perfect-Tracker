@@ -170,6 +170,11 @@ class Calendar:
     def update_month(self,event):
         month2 = self.valmonth.get()
         if month2 == 'February':
-            print('working')
-            self.lblfuck = Label(self.parent.tab2, text= "FUCK YOU", font = 16)
-            self.lblfuck.place(x=300, y=250)
+            self.lbl30.destroy()
+            self.lbl31.destroy()
+        elif month2 == 'April' or month2 == 'June' or month2 == 'September' or month2 == 'November':
+            self.init_month()
+            self.lbl31.destroy()
+        else:
+            self.init_month()
+            self.month_format()
