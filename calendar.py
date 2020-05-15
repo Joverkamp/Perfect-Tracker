@@ -6,9 +6,12 @@ from tkinter import *
 
 #vertical and horiztonal lines for calendar i
 class Calendar:
+    def __init__(self, parent):
+        self.parent = parent
+        self.create_grid()
 
     def create_grid(self):
-        canvas = Canvas(self.tab2)
+        canvas = Canvas(self.parent.tab2, width=SCREENWIDTH, height=SCREENHEIGHT)
         #horizontal
         canvas.create_line(0,50, 650, 50)
         canvas.create_line(0,70, 650,480)

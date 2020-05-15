@@ -9,16 +9,16 @@ class Application:
         self.mainWindow = parent
         
         self.make_tabs()
-        self.calendar_create()
+        self.calendar = Calendar(self)
         
     def make_tabs(self):
         self.tab_parent = ttk.Notebook(self.mainWindow)
         #create tabs connected to parent notebook. Each tab is its own frame
-        self.tab1 = ttk.Frame(self.tab_parent, width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
-        self.tab2 = ttk.Frame(self.tab_parent, width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
-        self.tab3 = ttk.Frame(self.tab_parent, width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
-        self.tab4 = ttk.Frame(self.tab_parent, width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
-        self.tab5 = ttk.Frame(self.tab_parent, width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
+        self.tab1 = ttk.Frame(self.tab_parent, width=SCREENWIDTH, height=SCREENHEIGHT)
+        self.tab2 = ttk.Frame(self.tab_parent, width=SCREENWIDTH, height=SCREENHEIGHT)
+        self.tab3 = ttk.Frame(self.tab_parent, width=SCREENWIDTH, height=SCREENHEIGHT)
+        self.tab4 = ttk.Frame(self.tab_parent, width=SCREENWIDTH, height=SCREENHEIGHT)
+        self.tab5 = ttk.Frame(self.tab_parent, width=SCREENWIDTH, height=SCREENHEIGHT)
         #add tabs to parent notebook   
         self.tab_parent.add(self.tab1, text="Schedule")
         self.tab_parent.add(self.tab2, text="Calendar")
@@ -29,12 +29,12 @@ class Application:
         self.tab_parent.pack()
 
     def calendar_create(self):
-        Calendar.create_grid(self)
+        Calendar.create_grid(self, self.tab2)
        
 #create main window 
 window = Tk()
 window.resizable(width=False, height=False)
-window.geometry("{}x{}+50+50".format(SCREEN_WIDTH,SCREEN_HEIGHT))
+window.geometry("{}x{}+50+50".format(SCREENWIDTH,SCREENHEIGHT))
 #adjust tabs with style
 style = ttk.Style()
 style.theme_create( "MyStyle", parent="alt", settings={
