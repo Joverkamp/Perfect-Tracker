@@ -1,12 +1,15 @@
 from tkinter import *
 from tkinter import ttk
 from settings import *
+from calendar import *
+
 
 class Application:
     def __init__(self, parent):
         self.mainWindow = parent
         
         self.make_tabs()
+        self.calendar_create()
         
     def make_tabs(self):
         self.tab_parent = ttk.Notebook(self.mainWindow)
@@ -24,7 +27,10 @@ class Application:
         self.tab_parent.add(self.tab5, text="Priority View")
         #pack tabs to main window
         self.tab_parent.pack()
-        
+
+    def calendar_create(self):
+        Calendar.create_grid(self)
+       
 #create main window 
 window = Tk()
 window.resizable(width=False, height=False)
