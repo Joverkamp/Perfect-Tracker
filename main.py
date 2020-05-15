@@ -3,12 +3,14 @@ from tkinter import ttk
 from settings import *
 from schedule import *
 import tkinter.font as font
+from calendar import *
 
 class Application:
     def __init__(self, parent):
         self.mainWindow = parent
         self.make_tabs()
         self.scheduleTab = ScheduleTab(self.mainWindow,self.tab1)
+        self.calendar = Calendar(self)
         
     def make_tabs(self):
         self.tab_parent = ttk.Notebook(self.mainWindow)
@@ -33,12 +35,23 @@ class Application:
         self.tab_parent.add(self.tab5, text="Priority View")
         #pack tabs to main window
         self.tab_parent.pack()
-        
+
+    def calendar_create(self):
+        Calendar.create_grid(self, self.tab2)
+       
 #create main window 
 window = Tk()
 window.resizable(width=False, height=False)
 window.geometry("{}x{}+50+50".format(SCREENWIDTH,SCREENHEIGHT))
-#create app from window 
+#create app from window
+#adjust tabs with style
+style = ttk.Style()
+style.theme_create( "MyStyle", parent="alt", settings={
+    "TNotebook": {"configure": {"tabmargins":[ 4, 5, -5, 0] } },
+    "TNotebook.Tab": {"configure": {"padding":[32,5],
+                                    "font" : ('URW Gothic L', '12', 'bold')}, }})
+style.theme_use("MyStyle")
+#create app
 app = Application(window)
 #main loop
 window.mainloop()
