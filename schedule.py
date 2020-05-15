@@ -15,7 +15,6 @@ class ScheduleTab:
         self.btn1 = Button(self.scheduleFrame, text='New Event', font=myFont,
                            command = lambda : [self.open_event_window()])
         self.btn1.place(x=SCREENWIDTH-90,y=SCREENHEIGHT-75)
-        
     def open_event_window(self):
         #disable btn1
         self.btn1['state'] = 'disabled'
