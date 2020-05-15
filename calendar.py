@@ -1,7 +1,6 @@
+from tkinter import *
 from tkinter import ttk
 from settings import*
-from tkinter import *
-
 
 
 #vertical and horiztonal lines for calendar i
@@ -13,7 +12,7 @@ class Calendar:
         self.create_grid()
         self.days_of_week()
         self.month_format()
-        self.update_month()
+        self.init_month()
 
     def create_grid(self):
         
@@ -81,13 +80,13 @@ class Calendar:
                 state='readonly',
                 width=10,
                 font=14)
-        self.month.current(9)
+        self.month.current(0)
         self.month.value = self.valmonth
         self.month.place(x=300, y=10)
-        self.month.bind('<<ComboxSelected>>',self.update_month())
+        self.month.bind('<<ComboboxSelected>>',self.update_month)
 
 
-    def update_month(self):
+    def init_month(self):
 
         ##x = 0
         ##y = 0
@@ -105,8 +104,6 @@ class Calendar:
                 ##for index in range(len(DAYS31)):
                     ##DAYS31[index] = Label(self.parent.tab2, text= DAYS28[index])
                     ##DAYS31[index].place(x=10+x, y=100+y)
-
-        month = self.valmonth.get()
         self.lbl1 = Label(self.parent.tab2, text = "1", font = 14)
         self.lbl1.place(x=53, y=65) 
         self.lbl2 = Label(self.parent.tab2, text = "2", font = 14)
@@ -169,6 +166,10 @@ class Calendar:
         self.lbl30.place(x=137, y=395)
         self.lbl31 = Label(self.parent.tab2, text = "31", font = 14)
         self.lbl31.place(x=225, y=395)
-        if month == 'February':
+        
+    def update_month(self,event):
+        month2 = self.valmonth.get()
+        if month2 == 'February':
+            print('working')
             self.lblfuck = Label(self.parent.tab2, text= "FUCK YOU", font = 16)
             self.lblfuck.place(x=300, y=250)
