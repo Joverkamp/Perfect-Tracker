@@ -46,11 +46,11 @@ window.geometry("{}x{}+50+50".format(SCREENWIDTH,SCREENHEIGHT))
 #create app from window
 #adjust tabs with style
 style = ttk.Style()
-style.theme_create( "MyStyle", parent="alt", settings={
+style.theme_create( "TabStyle", parent="alt", settings={
     "TNotebook": {"configure": {"tabmargins":[ 4, 5, -5, 0] } },
     "TNotebook.Tab": {"configure": {"padding":[32,5],
                                     "font" : ('URW Gothic L', '12', 'bold')}, }})
-style.theme_use("MyStyle")
+style.theme_use("TabStyle")
 #create app
 app = Application(window)
 #main loop
